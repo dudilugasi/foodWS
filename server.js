@@ -8,6 +8,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/get-recipes',controller.getRecipes);
 
-app.post('/like-recipe/',controller.likeRecipe);
+app.get('/get-ingredients',controller.getIngredients);
+
+app.post('/like-recipe',controller.likeRecipe);
 
 app.listen(8000);
+
+console.log('listening')

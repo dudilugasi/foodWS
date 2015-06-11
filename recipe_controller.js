@@ -22,6 +22,7 @@ exports.getRecipes = function(req,res) {
     }
     console.log(ingredients);
     Recipes.find().where('ingredients.name').nin(ingredients).exec(function(err,data){
+        res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(data);
     });
 };
@@ -31,6 +32,7 @@ exports.likeRecipe = function(req,res) {
     console.log(recipe);
     Recipes.findOne().where('name').equals(recipe).exec(function(err,data){
         data.update({$set:{like: !data.like}}).exec(function (err, result) {
+            res.header('Access-Control-Allow-Origin', '*');
             res.status(200).json(data);
         })
     });

@@ -21,22 +21,31 @@ exports.getUserLikes = function(req,res) {
     if (userID) {
         Users.findOne().where('user_id').equals(userID).exec(function (err, data) {
             res.header('Access-Control-Allow-Origin', '*');
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             res.status(200).json(data.likes);
         });
     }
     else {
         res.header('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.status(200).json([]);
     }
 };
 
 exports.putUserLikes = function(req,res) {
-    var userID = req.body.user_id;
-    var likes = req.body.likes;
-    console.log(userID,likes);
+    var userID = url.parse(req.url,true).query.user_id;
+    var likes = url.parse(req.url,true).query.likes;
+    if (!likes) {
+        likes = []
+    }
+    else if (!Array.isArray(likes)) {
+        likes = [likes];
+    }
+    console.log(likes);
     Users.update({user_id: userID},{likes: likes}).exec(function(err,data){
         Users.findOne().where('user_id').equals(userID).exec(function (err, data) {
             res.header('Access-Control-Allow-Origin', '*');
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             res.status(200).json(data);
         });
     });
@@ -53,6 +62,7 @@ exports.getRecipes = function(req,res) {
     console.log(ingredients);
     Recipes.find().where('ingredients.name').nin(ingredients).exec(function(err,data){
         res.header('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.status(200).json(data);
     });
 };
@@ -60,6 +70,7 @@ exports.getRecipes = function(req,res) {
 exports.getIngredients = function(req,res) {
     Ingredients.find().exec(function(err,data){
         res.header('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.status(200).json(data[0].items);
     });
 };

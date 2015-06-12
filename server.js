@@ -1,5 +1,5 @@
 var express = require('express');
-var controller = require('./recipe_controller');
+var controller = require('./controller');
 var bodyParser = require('body-parser');
 var app = express();
 app.set('json spaces',4);
@@ -10,8 +10,7 @@ app.get('/get-recipes',controller.getRecipes);
 
 app.get('/get-ingredients',controller.getIngredients);
 
-app.post('/like-recipe',controller.likeRecipe);
-
+app.route('/likes').get(controller.getUserLikes).put(controller.putUserLikes);
 app.listen(8000);
 
-console.log('listening')
+console.log('listening');

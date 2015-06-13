@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca10b82f-eb0d-4e2b-9759-50b0c2cb89da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+    <list default="true" id="ca10b82f-eb0d-4e2b-9759-50b0c2cb89da" name="Default" comment="added git ignore&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="foodWS.iws" />
     <ignored path=".idea/workspace.xml" />

@@ -13,6 +13,7 @@ app.get('/get-ingredients',controller.getIngredients);
 app.get('/get-likes',controller.getUserLikes);
 
 app.get('/add-likes',controller.putUserLikes);
-app.listen(8000);
+
+app.listen(process.env.PORT || 3000);
 
 console.log('listening');

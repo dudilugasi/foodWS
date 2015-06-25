@@ -12,8 +12,7 @@ var recipeSchema = new Schema({
     serves: String,
     ingredients: [ingredientsSchema],
     directions : [String],
-    meal : String,
-    like: Boolean
+    meal : String
 },{collection: 'recipes'});
 
 

@@ -2,6 +2,8 @@ var express = require('express');
 var controller = require('./controller');
 var bodyParser = require('body-parser');
 var app = express();
+
+app.use(express.static('public'));
 app.set('json spaces',4);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -12,7 +12,8 @@ var recipeSchema = new Schema({
     serves: String,
     ingredients: [ingredientsSchema],
     directions : [String],
-    meal : String
+    meal : String,
+    image: String
 },{collection: 'recipes'});
 
 

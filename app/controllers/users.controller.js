@@ -20,8 +20,16 @@ exports.getUser = function(req,res) {
                 });
             }
             else {
-                // Send a JSON representation of the user
-                res.status(200).json(data);
+                if (data) {
+                    // Send a JSON representation of the user
+                    res.status(200).json(data);
+                }
+                else {
+                    res.status(400).send({
+                        // If there was no user_id send error message
+                        message: 'no user found'
+                    });
+                }
             }
         });
     }
@@ -62,8 +70,16 @@ exports.putUserLikes = function(req,res) {
                         });
                     }
                     else {
-                        // Send a JSON representation of the user
-                        res.status(200).json(data);
+                        if (data) {
+                            // Send a JSON representation of the user
+                            res.status(200).json(data);
+                        }
+                        else {
+                            res.status(400).send({
+                                // If there was no user_id send error message
+                                message: 'no user found'
+                            });
+                        }
                     }
                 });
             }
@@ -106,8 +122,16 @@ exports.putUserBlocked = function(req,res) {
                         });
                     }
                     else {
-                        // Send a JSON representation of the user
-                        res.status(200).json(data);
+                        if (data) {
+                            // Send a JSON representation of the user
+                            res.status(200).json(data);
+                        }
+                        else {
+                            res.status(400).send({
+                                // If there was no user_id send error message
+                                message: 'no user found'
+                            });
+                        }
                     }
                 });
             }

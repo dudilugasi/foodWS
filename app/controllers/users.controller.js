@@ -1,6 +1,3 @@
-/**
- * Created by dudi on 07/07/2015.
- */
 var mongoose = require('mongoose'),
     Users = mongoose.model('User'),
     url = require('url'),

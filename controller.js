@@ -16,13 +16,13 @@ var Ingredients = mongoose.model('ingredientsM');
 var Users = mongoose.model('usersM');
 
 //returns the likes array of a user
-exports.getUserLikes = function(req,res) {
+exports.getUser = function(req,res) {
     var userID =  url.parse(req.url,true).query.user_id;
     if (userID) {
         Users.findOne().where('user_id').equals(userID).exec(function (err, data) {
             res.header('Access-Control-Allow-Origin', '*');
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            res.status(200).json(data.likes);
+            res.status(200).json(data);
         });
     }
     else {
@@ -39,6 +39,21 @@ exports.putUserLikes = function(req,res) {
     likes = makeAnArray(likes);
     console.log(likes);
     Users.update({user_id: userID},{likes: likes}).exec(function(err,data){
+        Users.findOne().where('user_id').equals(userID).exec(function (err, data) {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            res.status(200).json(data);
+        });
+    });
+};
+
+//update the blocked recipes array of a user
+exports.putUserBlocked = function(req,res) {
+    var userID = url.parse(req.url,true).query.user_id;
+    var blocked = url.parse(req.url,true).query.blocked;
+    blocked = makeAnArray(blocked);
+    console.log(blocked);
+    Users.update({user_id: userID},{blocked: blocked}).exec(function(err,data){
         Users.findOne().where('user_id').equals(userID).exec(function (err, data) {
             res.header('Access-Control-Allow-Origin', '*');
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 userSchema = new Schema({
     user_id : {type:Number , unique: true},
-    likes: [String]
+    likes: [String],
+    blocked: [String]
 },{collection: 'users'});
 
 exports.userSchema = userSchema;

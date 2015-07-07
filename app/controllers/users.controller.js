@@ -27,7 +27,7 @@ exports.getUser = function(req,res) {
                 else {
                     res.status(400).send({
                         // If there was no user_id send error message
-                        message: 'no user found with id' + userID
+                        message: 'no user found with id: ' + userID
                     });
                 }
             }
@@ -77,7 +77,7 @@ exports.putUserLikes = function(req,res) {
                         else {
                             res.status(400).send({
                                 // If there was no user_id send error message
-                                message: 'no user found with id' + userID
+                                message: 'no user found with id: ' + userID
                             });
                         }
                     }
@@ -129,7 +129,7 @@ exports.putUserBlocked = function(req,res) {
                         else {
                             res.status(400).send({
                                 // If there was no user_id send error message
-                                message: 'no user found with id' + userID
+                                message: 'no user found with id: ' + userID
                             });
                         }
                     }

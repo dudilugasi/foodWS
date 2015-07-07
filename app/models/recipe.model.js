@@ -1,13 +1,18 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+/**
+ * Created by dudi on 07/07/2015.
+ */
+
+//Load the module dependencies
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var ingredientsSchema = new Schema({
-    name: String,
+    name: {type: String, index: 1},
     description: String
 });
 
 var recipeSchema = new Schema({
-    name: String,
+    name: {type: String, index: 1},
     time : String,
     serves: String,
     ingredients: [ingredientsSchema],
@@ -16,6 +21,4 @@ var recipeSchema = new Schema({
     image: String
 },{collection: 'recipes'});
 
-
-
-exports.recipeSchema = recipeSchema;
+mongoose.model('Recipe',recipeSchema);

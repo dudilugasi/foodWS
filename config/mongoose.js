@@ -1,9 +1,9 @@
 // Load the module dependencies
 var mongoose = require('mongoose');
 
-
+// Define the Mongoose configuration
 module.exports = function() {
-    //Connect to mongoDB
+    //Connect to MongoDB with Mongoose
     var db = mongoose.connect('mongodb://dudi:lugasi@ds045252.mongolab.com:45252/food');
 
     //Load the application models

@@ -1,6 +1,10 @@
+//Load the module dependencies
 var express = require('express');
 
+//Define the express configuration
 module.exports = function() {
+
+    //Create a new express instance
     var app = express();
 
     //configure body parser
@@ -21,5 +25,6 @@ module.exports = function() {
     // Configure static file serving
     app.use(express.static('./public'));
 
+    //Return the Express application instance
     return app;
 };

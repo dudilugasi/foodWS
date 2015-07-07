@@ -1,4 +1,5 @@
 
+//Create an util method to create an array from parameters
 exports.makeAnArray = function(array) {
     //if the parameter is empty it will be empty array
     if (!array) {
@@ -11,6 +12,7 @@ exports.makeAnArray = function(array) {
     return array;
 };
 
+// Create an error handling method
 exports.getErrorMessage = function(err) {
     if (err.errors) {
         for (var errName in err.errors) {

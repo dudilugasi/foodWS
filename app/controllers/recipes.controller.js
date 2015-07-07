@@ -15,6 +15,13 @@ exports.getRecipes = function(req,res) {
     blockedRecipes = util.makeAnArray(blockedRecipes);
     console.log(ingredients,blockedRecipes);
     Recipes.find().where('ingredients.name').nin(ingredients).where('name').nin(blockedRecipes).exec(function(err,data){
-        res.status(200).json(data);
+        if (err) {
+            return res.status(400).send({
+                message: util.getErrorMessage(err)
+            });
+        }
+        else {
+            res.status(200).json(data);
+        }
     });
 };

@@ -19,7 +19,6 @@ module.exports = function() {
 
     // Load the routing files
     require('../app/routes/users.routes.js')(app);
-    require('../app/routes/ingredients.routes.js')(app);
     require('../app/routes/recipes.routes.js')(app);
 
     // Configure static file serving

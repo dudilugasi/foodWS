@@ -33,10 +33,21 @@ exports.getRecipes = function(req,res) {
 
 //Creates a method that will send all the ingredients
 exports.getIngredients = function(req,res) {
+    //get from each recipe the ingredients and group in by category
     Recipes.aggregate([
         {$unwind: '$ingredients'},
         {$group: { _id: "$ingredients.category" , ingredients: {$addToSet: {name : "$ingredients.name"}}}}
     ]).exec(function(err,data) {
-        res.status(200).json(data);
+        if (err) {
+            // If there was an error send the error message
+            return res.status(400).send({
+                message: util.getErrorMessage(err)
+            });
+        }
+        else {
+            // Send a JSON representation of the ingredients
+            res.status(200).json(data);
+        }
+
     });
 };

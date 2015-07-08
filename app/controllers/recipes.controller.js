@@ -35,7 +35,7 @@ exports.getRecipes = function(req,res) {
 exports.getIngredients = function(req,res) {
     Recipes.aggregate([
         {$unwind: '$ingredients'},
-        {$group: { _id: "$ingredients.category" , description: {$addToSet: "$ingredients.name"}}}
+        {$group: { _id: "$ingredients.category" , ingredients: {$addToSet: {name : "$ingredients.name"}}}}
     ]).exec(function(err,data) {
         res.status(200).json(data);
     });

@@ -30,3 +30,13 @@ exports.getRecipes = function(req,res) {
         }
     });
 };
+
+//Creates a method that will send all the ingredients
+exports.getIngredients = function(req,res) {
+    Recipes.aggregate([
+        {$unwind: '$ingredients'},
+        {$group: { _id: "$ingredients.category" , description: {$addToSet: "$ingredients.name"}}}
+    ]).exec(function(err,data) {
+        res.status(200).json(data);
+    });
+};

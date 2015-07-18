@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 // Define a new 'ingredientsSchema'
 var ingredientsSchema = new Schema({
     name: {type: String, index: 1},
-    description: String
+    description: String,
+    category: String
 });
 
 // Define a new 'recipeSchema'
